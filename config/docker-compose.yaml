@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  orderer.example.com:
+    image: hyperledger/fabric-orderer:latest
+    environment:
+      - ORDERER_GENERAL_LOGLEVEL=INFO
+    ports:
+      - "7050:7050"
+    volumes:
+      - ./crypto-config:/etc/hyperledger/config
+  peer0.org1.example.com:
+    image: hyperledger/fabric-peer:latest
+    environment:
+      - CORE_PEER_ID=peer0.org1.example.com
+    ports:
+      - "7051:7051"
